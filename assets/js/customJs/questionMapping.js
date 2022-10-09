@@ -27,16 +27,26 @@ function mappingQuestionComponent() {
 }
 
 function searchInteraction() {
-    $(document).on('input', '#questionSearchInputInteraction', function () {
-        var searchValueQuestion = this.value;
-        var reg = new RegExp(searchValueQuestion, "i");
-        var selector = $('.rm-question-card');
-        if (searchValueQuestion) {
-            selector.hide().filter(function () {
-                return $(this).find('.card-title').data('question').match(reg);
-            }).show();
-        } else {
-            selector.show();
-        }
+    // $(document).on('input', '#questionSearchInputInteraction', function () {
+    //     var searchValueQuestion = this.value;
+    //     var reg = new RegExp(searchValueQuestion, "i");
+    //     var selector = $('.rm-question-card');
+    //     if (searchValueQuestion) {
+    //         selector.hide().filter(function () {
+    //             return $(this).find('.card-title').data('question').match(reg);
+    //         }).show();
+    //     } else {
+    //         selector.show();
+    //     }
+    // });
+
+    var $rows = $('#createdQuestionCard .rm-question-card');
+    $('#questionSearchInputInteraction').keyup(function () {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $rows.show().filter(function () {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
     });
 }

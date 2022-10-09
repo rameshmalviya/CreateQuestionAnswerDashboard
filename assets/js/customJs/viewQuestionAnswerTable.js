@@ -11,7 +11,7 @@ function questionTableInit() {
             `<tr class="rm-table-tr-view-question">
                 <td>${index + 1}</td>
                 <td class="searchDataTD rm-wrap-text" data-question="${question.myTitle}">${question.myTitle}</td>
-                <td class="rm-wrap-text">${question.myAnswer}</td>
+                <td class="searchDataTD rm-wrap-text" data-question="${question.myAnswer}">${question.myAnswer}</td>
                 <td>${userName}</td>
             </tr>`
         ).join('');
@@ -20,16 +20,13 @@ function questionTableInit() {
 }
 
 function searchInteraction() {
-    $(document).on('input', '#questionSearchInputInteraction', function () {
-        var searchValueQuestion = this.value;
-        var reg = new RegExp(searchValueQuestion, "i");
-        var selector = $('.rm-table-tr-view-question');
-        if (searchValueQuestion) {
-            selector.hide().filter(function () {
-                return $(this).find('.searchDataTD').data('question').match(reg);
-            }).show();
-        } else {
-            selector.show();
-        }
+    var $rows = $('#QuestionListTable tbody > tr');
+    $('#questionSearchInputInteraction').keyup(function () {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $rows.show().filter(function () {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
     });
 }
