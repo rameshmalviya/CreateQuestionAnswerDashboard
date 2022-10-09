@@ -86,16 +86,22 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item ">
+            <li class="menu-item">
               <a href="homePage.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-            <li class="menu-item active">
-              <a href="CreateForm.html" class="menu-link">
+            <li class="menu-item active" id="CreateQuestionForAdmin" style="display: none;">
+              <a href="createForm.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Create Question</div>
+              </a>
+            </li>
+            <li class="menu-item active" id="viewQuestionForViewers" style="display: none;">
+              <a href="createdQuestion.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">View Question</div>
               </a>
             </li>
             <li class="menu-item">
@@ -162,7 +168,7 @@
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
+                <!-- <li class="nav-item lh-1 me-3">
                   <a
                     class="github-button"
                     href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -172,7 +178,7 @@
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                     >Star</a
                   >
-                </li>
+                </li> -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -238,10 +244,11 @@
             <div class="container-xxl flex-grow-1 container-p-y">
             <div class="d-flex justify-content-between align-items-center">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Created Question /</span> Questions</h4>
-              <!-- <a
+              <a
+              id="createQuestionButton"
               href="createForm.html"
               class="btn btn-primary"
-              >Create More Question</a> -->
+              >Create More Question</a>
             </div>
 
               <!-- Examples -->

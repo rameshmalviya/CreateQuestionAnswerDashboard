@@ -6,14 +6,18 @@ function initQuestion() {
     loginFomConfigration();
     createQuestionFormConfigration();
     userNameMapping();
+    countCreatededQuestion();
+    AdminAndViewersSwitchScreenInteraction();
 }
 
 function loginFomConfigration() {
     $("#submitLogin").click(function () {
-
         if ($("#userName").val() == "Priti Seth" && $("#password").val() == "123") {
             console.log('validatedUserName');
             localStorage.setItem('userName', 'Priti Seth');
+            window.location.href = "homePage.html";
+        } else if ($('#userName').val() === "Users" && $('#password').val() === "user123") {
+            localStorage.setItem('userName', 'Users');
             window.location.href = "homePage.html";
         } else {
             const template = `<div class="error-message">Please enter valid userName and password.</div>`;
@@ -25,32 +29,61 @@ function loginFomConfigration() {
 
 function createQuestionFormConfigration() {
     const form = document.querySelector('#formQuestion');
-    let stories = []
     if (form) {
         form.addEventListener('submit', (e) => {
-            debugger
             e.preventDefault();
+            debugger
             const questionTitle = $('#createQuestionTitle').val();
             const questionAnswer = $('#createQuestionAnswer').val();
             if (questionTitle !== "", questionAnswer !== "") {
-                stories.push({
+
+                var existingEntries = JSON.parse(localStorage.getItem("questionData"));
+                if (existingEntries == null) {
+                    existingEntries = [];
+                };
+                var entry = {
                     myTitle: questionTitle,
                     myAnswer: questionAnswer,
-                });
-                localStorage.setItem('questionCreateData', JSON.stringify(stories));
+                };
+                existingEntries.push(entry);
+                localStorage.setItem("questionData", JSON.stringify(existingEntries));
+
+
                 $('#createQuestionTitle').val('');
                 $('#createQuestionAnswer').val('');
-                let countOfCreatedQuestion = stories.length;
+                let countOfCreatedQuestion = existingEntries.length;
                 $('#countQuestionsCreated').html(countOfCreatedQuestion);
             }
         });
     }
 }
 
+function countCreatededQuestion() {
+    const question = JSON.parse(localStorage.getItem("questionData"));
+    let countOfCreatedQuestion = question.length;
+    $('#countQuestionsCreated').html(countOfCreatedQuestion);
+    var result = (countOfCreatedQuestion / 100) * 100;
+    $('#TotalParcentageQuestion').text(`${result}%`);
+}
+
 
 function userNameMapping() {
-    debugger
     const userName = localStorage.getItem('userName');
     $('#userNameSpan').text(userName);
     console.log(userName);
+}
+
+function AdminAndViewersSwitchScreenInteraction() {
+    const userName = localStorage.getItem('userName');
+    // $('#CreateQuestionForAdmin').hide();
+    // $('#viewQuestionForViewers').hide();
+
+    if (userName === "Priti Seth") {
+        $('#CreateQuestionForAdmin').show();
+        $('#createQuestionButton').show();
+    } else if (userName === "Users") {
+        $('#viewQuestionForViewers').show();
+        $('#createQuestionButton').hide();
+    }
+
 }

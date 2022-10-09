@@ -86,16 +86,22 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item ">
+            <li class="menu-item">
               <a href="homePage.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="createForm.html" class="menu-link">
+            <li class="menu-item" id="CreateQuestionForAdmin" style="display: none;">
+              <a href="createForm.html" class="menu-link"> 
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Create Question</div>
+              </a>
+            </li>
+            <li class="menu-item" id="viewQuestionForViewers" style="display: none;">
+              <a href="createdQuestion.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">View Question</div>
               </a>
             </li>
             <li class="menu-item active">
@@ -152,6 +158,8 @@
                   <i class="bx bx-search fs-4 lh-0"></i>
                   <input
                     type="text"
+                    id="questionSearchInputInteraction"
+                    name="questionKeyInteraction"
                     class="form-control border-0 shadow-none"
                     placeholder="Search..."
                     aria-label="Search..."
@@ -162,7 +170,7 @@
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
+                <!-- <li class="nav-item lh-1 me-3">
                   <a
                     class="github-button"
                     href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -172,7 +180,7 @@
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                     >Star</a
                   >
-                </li>
+                </li> -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -239,11 +247,12 @@
 
               <!-- Basic Bootstrap Table -->
               <div class="card">
-                <h5 class="card-header">Table Basic</h5>
+                <h5 class="card-header">Question Answer List</h5>
                 <div class="table-responsive text-nowrap">
-                  <table class="table">
+                  <table class="table rm-table-view-question-table" style="table-layout: fixed; width: 100%">
                     <thead>
                       <tr>
+                        <th>Question ID</th>
                         <th>Question Title</th>
                         <th>Answer</th>
                         <th>User Name</th>
