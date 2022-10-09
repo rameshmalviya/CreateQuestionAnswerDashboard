@@ -61,8 +61,8 @@ function createQuestionFormConfigration() {
 }
 
 function countCreatededQuestion() {
-    if (existingEntries != null && existingEntries.length < 1) {
-        const question = JSON.parse(localStorage.getItem("questionData"));
+    const question = JSON.parse(localStorage.getItem("questionData"));
+    if (question != null && question.length < 1) {
         let countOfCreatedQuestion = question.length;
         $('#countQuestionsCreated').html(countOfCreatedQuestion);
         var result = (countOfCreatedQuestion / 100) * 100;
