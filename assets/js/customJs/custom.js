@@ -61,11 +61,13 @@ function createQuestionFormConfigration() {
 }
 
 function countCreatededQuestion() {
-    const question = JSON.parse(localStorage.getItem("questionData"));
-    let countOfCreatedQuestion = question.length;
-    $('#countQuestionsCreated').html(countOfCreatedQuestion);
-    var result = (countOfCreatedQuestion / 100) * 100;
-    $('#TotalParcentageQuestion').text(`${result}%`);
+    if (existingEntries != null && existingEntries.length < 1) {
+        const question = JSON.parse(localStorage.getItem("questionData"));
+        let countOfCreatedQuestion = question.length;
+        $('#countQuestionsCreated').html(countOfCreatedQuestion);
+        var result = (countOfCreatedQuestion / 100) * 100;
+        $('#TotalParcentageQuestion').text(`${result}%`);
+    }
 }
 
 
