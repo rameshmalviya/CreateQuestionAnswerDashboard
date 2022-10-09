@@ -51,7 +51,8 @@ function createQuestionFormConfigration() {
 
                 $('#createQuestionTitle').val('');
                 $('#createQuestionAnswer').val('');
-                if (existingEntries != null && existingEntries.length < 1) {
+
+                if (existingEntries != null) {
                     let countOfCreatedQuestion = existingEntries.length;
                     $('#countQuestionsCreated').html(countOfCreatedQuestion);
                 }
@@ -62,7 +63,7 @@ function createQuestionFormConfigration() {
 
 function countCreatededQuestion() {
     const question = JSON.parse(localStorage.getItem("questionData"));
-    if (question != null && question.length < 1) {
+    if (question != null) {
         let countOfCreatedQuestion = question.length;
         $('#countQuestionsCreated').html(countOfCreatedQuestion);
         var result = (countOfCreatedQuestion / 100) * 100;
