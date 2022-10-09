@@ -51,8 +51,10 @@ function createQuestionFormConfigration() {
 
                 $('#createQuestionTitle').val('');
                 $('#createQuestionAnswer').val('');
-                let countOfCreatedQuestion = existingEntries.length;
-                $('#countQuestionsCreated').html(countOfCreatedQuestion);
+                if (existingEntries != null && existingEntries.length < 1) {
+                    let countOfCreatedQuestion = existingEntries.length;
+                    $('#countQuestionsCreated').html(countOfCreatedQuestion);
+                }
             }
         });
     }
