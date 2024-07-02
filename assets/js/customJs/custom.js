@@ -83,7 +83,7 @@ function AdminAndViewersSwitchScreenInteraction() {
     // $('#CreateQuestionForAdmin').hide();
     // $('#viewQuestionForViewers').hide();
 
-    if (userName === "Priti Seth") {
+    if (userName === "Admin") {
         $('#CreateQuestionForAdmin').show();
         $('#createQuestionButton').show();
     } else if (userName === "Users") {
