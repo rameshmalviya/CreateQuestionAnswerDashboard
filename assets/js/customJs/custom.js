@@ -12,7 +12,7 @@ function initQuestion() {
 
 function loginFomConfigration() {
     $("#submitLogin").click(function () {
-        if ($("#userName").val() == "Priti Seth" && $("#password").val() == "123") {
+        if ($("#userName").val() == "Admin" && $("#password").val() == "123") {
             console.log('validatedUserName');
             localStorage.setItem('userName', 'Priti Seth');
             window.location.href = "homePage.html";
