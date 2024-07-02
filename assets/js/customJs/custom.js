@@ -14,7 +14,7 @@ function loginFomConfigration() {
     $("#submitLogin").click(function () {
         if ($("#userName").val() == "Admin" && $("#password").val() == "123") {
             console.log('validatedUserName');
-            localStorage.setItem('userName', 'Priti Seth');
+            localStorage.setItem('userName', 'Admin');
             window.location.href = "homePage.html";
         } else if ($('#userName').val() === "Users" && $('#password').val() === "user123") {
             localStorage.setItem('userName', 'Users');
